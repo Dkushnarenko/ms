@@ -1,24 +1,42 @@
-# Compiled class file
-*.class
+public class BubbleSort {
+    // Метод для сортировки массива методом пузырька
+    public static void bubbleSort(int[] array) {
+        int n = array.length;
+        boolean swapped;
 
-# Log file
-*.log
+        do {
+            swapped = false;
+            for (int i = 1; i < n; i++) {
+                if (array[i - 1] > array[i]) {
+                    // Обмен значениями, если текущий элемент больше следующего
+                    int temp = array[i - 1];
+                    array[i - 1] = array[i];
+                    array[i] = temp;
+                    swapped = true;
+                }
+            }
+            n--;
+        } while (swapped);
+    }
 
-# BlueJ files
-*.ctxt
+    // Метод для отображения содержимого массива
+    public static void displayArray(int[] array) {
+        for (int value : array) {
+            System.out.print(value + " ");
+        }
+        System.out.println();
+    }
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+    // Пример использования сортировки пузырьком
+    public static void main(String[] args) {
+        int[] array = {64, 34, 25, 12, 22, 11, 90};
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+        System.out.println("Unsorted Array:");
+        displayArray(array);
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+        bubbleSort(array);
+
+        System.out.println("Sorted Array:");
+        displayArray(array);
+    }
+}
